@@ -1,0 +1,26 @@
+<% include partials/header %>
+
+<h1><%=foundCampground.name%></h1>
+
+<img src=<%=foundCampground.image%>>
+
+<p><%=foundCampground.description%></p>
+
+<p><a class="btn btn-warning" href="/campgrounds/<%=foundCampground._id%>/edit">Edit Campground</a></p>
+
+<p>
+    <form action="/campgrounds/<%=foundCampground._id%>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">Delete Campground</button>
+    </form>
+</p>
+
+<p>
+    <a class= "btn btn-success" href="/campgrounds/<%=foundCampground._id%>/comments/new">Add New Comment</a>
+</p>
+
+<% foundCampground.comments.forEach(function(comment){ %>
+    <p><%=comment.author%> - commented:</p>
+    <p><%=comment.text%></p>
+<%});%>
+
+<% include partials/footer %>
